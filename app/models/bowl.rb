@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class Bowl
   attr_accessor :id, :batter, :bowler,
                 :match, :over_number, :order_number, :outcome_type, :score

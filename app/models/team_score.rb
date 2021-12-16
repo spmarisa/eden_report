@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class TeamScore
   attr_accessor :id, :team, :match, :total_score, :wickets
 

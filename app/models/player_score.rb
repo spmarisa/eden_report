@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class PlayerScore
   attr_accessor :id, :player, :match,
                 :total_score, :bowls_faced, :extra_bowls, :fours, :sixes
