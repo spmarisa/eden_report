@@ -1,5 +1,5 @@
-#Cricket score board LLD
+# Cricket score board LLD
 
-Ruby version: 3.0.3
+**Ruby version: 3.0.3**
 
-ruby .\app\application.rb < test
+> ruby .\app\application.rb < test
