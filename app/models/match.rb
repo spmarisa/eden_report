@@ -1,7 +1,8 @@
 require 'securerandom'
 
 class Match
-  attr_accessor :id, :number_of_overs, :number_of_players, :team1, :team2, :team1_order, :team2_order,
+  attr_accessor :id, :number_of_overs, :number_of_players,
+                :current_batsman, :current_bowler, :current_over, :current_over_bowl_number,
                 :bowls, :state, :outcome, :winner
 
   def initialize(number_of_overs, number_of_players)

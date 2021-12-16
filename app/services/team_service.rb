@@ -11,7 +11,7 @@ module TeamService
     InMemoryRepo.save_team(team)
   end
 
-  def self.get_team()
-    InMemoryRepo.team()
+  def self.get_team_by_name(team_name)
+    InMemoryRepo.get_teams().find { |team| team.name == team_name }
   end
 end

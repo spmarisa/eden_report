@@ -14,6 +14,6 @@ module MatchService
   end
 
   def self.get_number_of_overs()
-    InMemoryRepo.get_match().overs
+    InMemoryRepo.get_match().number_of_overs
   end
 end

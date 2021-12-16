@@ -1,4 +1,5 @@
 require_relative '../services/match_service'
+require_relative '../services/team_service'
 require_relative '../utils/input_adapter'
 
 module MatchController
@@ -8,6 +9,15 @@ module MatchController
     number_of_overs = InputAdapter.get_integer_input("Please enter No. of overs for each team:")
 
     MatchService.initialize_match(number_of_overs, number_of_players)
+  end
+
+  def self.update_initial_match_details(team_name)
+    team = TeamService.get_team_by_name(team_name)
+    match = MatchService.get_match()
+
+    match.current_batsman = team.players[0]
+    match.current_over = 1
+    match.current_over_bowl_number = 1
   end
 
 end

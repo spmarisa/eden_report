@@ -7,4 +7,8 @@ class Player
     @id = SecureRandom.uuid
     @name = player_name
   end
+
+  def blah()
+    return true
+  end
 end
