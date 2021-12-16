@@ -12,12 +12,12 @@ module Application
     MatchController.get_and_process_match_details()
 
     TeamController.get_and_register_team("TEAM1")
-    MatchController.update_initial_match_details("TEAM1")
-    ScoreController.get_and_process_input_bowls("TEAM1")
+    MatchController.update_match_details_wrt_team("TEAM1")
+    ScoreController.get_and_process_input_bowls()
 
     TeamController.get_and_register_team("TEAM2")
     MatchController.update_initial_match_details("TEAM2")
-    ScoreController.get_and_process_input_bowls("TEAM2")
+    ScoreController.get_and_process_input_bowls()
 
     InMemoryRepo.all()
 

@@ -8,10 +8,10 @@ module BowlService
 
   def self.process_bowl_input(raw_input)
     match = MatchService.get_match
-    outcome_type, score = Bowl.process_bowl_raw_input(raw_input)
+    state, score = Bowl.process_bowl_raw_input(raw_input)
 
     bowl_args = BowlStruct.new(match.current_batsman, match.current_bowler, match, match.current_over,
-                               match.current_over_bowl_number, outcome_type, score)
+                               match.current_over_bowl_number, state, score)
     bowl = Bowl.new(bowl_args)
     InMemoryRepo.save_bowl(bowl)
     return bowl

@@ -13,12 +13,12 @@ class Bowl
     @match = bowl_args.match
     @over_number = bowl_args.over_number
     @order_number = bowl_args.order_number
-    @outcome_type = bowl_args.outcome_type
+    @state = bowl_args.state
     @score = bowl_args.score
   end
 
   def is_valid()
-    return !(@outcome_type == 'WIDE' || @outcome_type == 'NO_BALL')
+    return !(@state == 'WIDE' || @state == 'NO_BALL')
   end
 
   def self.process_bowl_raw_input(raw_input)
