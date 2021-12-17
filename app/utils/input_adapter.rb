@@ -11,4 +11,16 @@ module InputAdapter
     return gets.chomp().split(",").map(&:strip)
   end
 
+  def self.get_input_in_given_format(regex_format)
+    input = gets.chomp()
+
+    #TODO
+    # if input.match(regex_format)
+      return input
+    # else
+    #   puts "Please enter input in proper format"
+    #   get_input_in_given_format(regex_format)
+    # end
+  end
+
 end

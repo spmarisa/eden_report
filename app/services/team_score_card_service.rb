@@ -1,5 +1,7 @@
-require_relative '../repos/in_memory_repo'
-require_relative '../models/TeamScore'
+require_relative '../repos/team_score_card_repo'
+require_relative '../models/team_score_card'
+require_relative '../services/team_service'
+require_relative '../services/match_service'
 
 
 module TeamScoreCardService
@@ -7,30 +9,22 @@ module TeamScoreCardService
   def self.initialize_team_score_cards()
     teams = TeamService.get_all_teams()
     match = MatchService.get_match()
-    score_cards = teams.map { |team| TeamScoreCard.new(team.id, match.id) }
+    score_cards = teams.map { |team| TeamScoreCard.new(team.id, match.id, match.number_of_players_per_team) }
 
     TeamScorecardRepo.save_score_cards(score_cards)
   end
 
-  # def self.create_score_board(team_name)
-  #   match = MatchService.get_match()
-  #   team = TeamService.get_team_by_name(team_name)
-  #   team_score = TeamScore.new(team, match)
-  #
-  #   InMemoryRepo.save_team_score(team_score)
-  # end
-  #
-  # def self.update_score(bowl)
-  #   team_score = get_team_score_by_name(bowl.match.current_team.name) || TeamScore.new(bowl.match, bowl.match.current_team)
-  #   team_score.total_score += bowl.score
-  #
-  #   team_score.score += 4 if bowl.score == 4
-  #   team_score.score += 6 if bowl.score == 6
-  #
-  #   team_score.status = 'OUT' if bowl.state == 'OUT'
-  # end
-  #
-  # def self.get_team_score_by_name(name)
-  #   InMemoryRepo.get_all_team_scores.find { |score| score.team.name == name }
-  # end
+  def self.process_event(bowl)
+    team_score_card = get_team_score_by_team_id(bowl.team_id)
+    team_score_card.total_score += bowl.score
+    team_score_card.wickets_remaining -= 1 if bowl.is_out()
+  end
+
+  def self.get_team_score_by_team_id(team_id)
+    get_all_score_card().find { |score_card| score_card.team_id == team_id }
+  end
+
+  def self.get_all_score_cards()
+    TeamScorecardRepo.get_score_cards()
+  end
 end
