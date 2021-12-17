@@ -1,5 +1,5 @@
-require_relative '../repos/in_memory_repo'
-require_relative '../models/PlayerScore'
+require_relative '../repos/player_score_card_repo'
+require_relative '../services/player_service'
 
 
 module PlayerScoreCardService

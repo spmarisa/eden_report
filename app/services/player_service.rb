@@ -31,29 +31,12 @@ module PlayerService
     all_players().find { |player| (player.id == player_id) }
   end
 
+  def self.get_players_of_team(team_id)
+    all_players().select { |player| (player.team_id == team_id) }
+  end
+
   def self.all_players
     PlayerRepo.get_all_players()
   end
 
-  # def self.create_score_board(team_name)
-  #   match = MatchService.get_match()
-  #   team = TeamService.get_team_by_name(team_name)
-  #   team_score = TeamScore.new(team, match)
-  #
-  #   InMemoryRepo.save_team_score(team_score)
-  # end
-  #
-  # def self.update_score(bowl)
-  #   team_score = get_team_score_by_name(bowl.match.current_team.name) || TeamScore.new(bowl.match, bowl.match.current_team)
-  #   team_score.total_score += bowl.score
-  #
-  #   team_score.score += 4 if bowl.score == 4
-  #   team_score.score += 6 if bowl.score == 6
-  #
-  #   team_score.status = 'OUT' if bowl.state == 'OUT'
-  # end
-  #
-  # def self.get_team_score_by_name(name)
-  #   InMemoryRepo.get_all_team_scores.find { |score| score.team.name == name }
-  # end
 end

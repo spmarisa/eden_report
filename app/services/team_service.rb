@@ -1,5 +1,5 @@
-require_relative '../repos/team_repo'
 require_relative '../models/team'
+require_relative '../repos/team_repo'
 
 module TeamService
 
@@ -14,5 +14,9 @@ module TeamService
 
   def self.get_team_by_order(order_number)
     get_all_teams().find { |team| team.batting_order == order_number }
+  end
+
+  def self.get_team_by_id(team_id)
+    get_all_teams().find { |team| team.id == team_id }
   end
 end

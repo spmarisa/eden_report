@@ -1,3 +1,5 @@
+require_relative '../services/match_service'
+require_relative '../services/player_service'
 require_relative '../repos/bowl_repo'
 require_relative '../models/match'
 require_relative '../models/bowl'
@@ -26,7 +28,7 @@ module BowlService
     return bowl
   end
 
-
+  private
   def self.process_raw_score_info(raw_input)
     case
     when raw_input == 'WIDE'

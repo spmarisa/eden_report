@@ -1,19 +1,20 @@
 require_relative '../services/bowl_service'
+require_relative '../services/player_score_card_service'
+require_relative '../services/team_score_service'
 require_relative '../services/match_service'
 require_relative '../utils/input_adapter'
 
 module BowlController
 
   def self.start_consuming_bowls()
-    #TODO - regex validation
-    bowl_input_regex = nil
+    bowl_input_regex = /\s/
     match_running = true
 
     while(match_running)
-      bowl_user_input = InputAdapter.get_input_in_given_format(bowl_input_regex)
+      bowl_user_input = InputHandler.get_input_in_given_format(bowl_input_regex)
 
 
-      # valuidate bowler name
+      # todo valuidate bowler name
       bowl = BowlService.process_bowl_raw_input(bowl_user_input)
       PlayerScoreCardService.process_event(bowl)
       TeamScoreService.process_event(bowl)
