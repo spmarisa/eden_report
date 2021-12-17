@@ -9,17 +9,23 @@ include Constants
 module Application
 
   def self.start()
+    TeamService.create_teams(["TEAM1", "TEAM2"])
+
     MatchController.get_and_process_match_details()
 
-    TeamController.get_and_register_team("TEAM1")
-    MatchController.update_match_details_wrt_team("TEAM1")
-    ScoreController.get_and_process_input_bowls()
+    TeamScoreCardService.initialize_team_score_cards()
 
-    TeamController.get_and_register_team("TEAM2")
-    MatchController.update_initial_match_details("TEAM2")
-    ScoreController.get_and_process_input_bowls()
+    PlayerController.get_and_process_player_details()
 
-    InMemoryRepo.all()
+    # TeamController.get_and_process_team_details("TEAM1")
+    # MatchController.update_match_details_wrt_team("TEAM1")
+    # ScoreController.get_and_process_input_bowls()
+    #
+    # TeamController.get_and_register_team("TEAM2")
+    # MatchController.update_initial_match_details("TEAM2")
+    # ScoreController.get_and_process_input_bowls()
+    #
+    # InMemoryRepo.all()
 
     # display_result()
   end

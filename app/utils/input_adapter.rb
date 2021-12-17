@@ -6,9 +6,9 @@ module InputAdapter
     # raise ArgumentError, 'Unexpected input, Please give proper input.' if integer_input <= 0
   end
 
-  def self.get_seq_input_as_array(message, size_of_array)
+  def self.get_input_as_array(message)
     puts message
-    return size_of_array.times.map { gets.chomp() }
+    return gets.chomp().split(",").map(&:strip)
   end
 
 end

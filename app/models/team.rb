@@ -1,11 +1,10 @@
 require 'securerandom'
 
 class Team
-  attr_accessor :id, :name, :players
+  attr_accessor :id, :name
 
-  def initialize(team_name, team_players)
-    @id = SecureRandom.uuid
+  def initialize(team_name)
+    @id = rand(1000.1999)
     @name = team_name
-    @players = team_players
   end
 end
